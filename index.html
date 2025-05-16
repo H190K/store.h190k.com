@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <header>
@@ -193,35 +196,8 @@
                 <h2>Our Portfolio</h2>
                 <p>Check out some of our recent projects</p>
             </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="images/portfolio-1.jpg" alt="Project 1">
-                    <div class="portfolio-overlay">
-                        <h3>E-commerce Website</h3>
-                        <p>Full stack development</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/portfolio-2.jpg" alt="Project 2">
-                    <div class="portfolio-overlay">
-                        <h3>Analytics Dashboard</h3>
-                        <p>Dashboard design</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/portfolio-3.jpg" alt="Project 3">
-                    <div class="portfolio-overlay">
-                        <h3>SaaS Landing Page</h3>
-                        <p>Landing page design</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/portfolio-4.jpg" alt="Project 4">
-                    <div class="portfolio-overlay">
-                        <h3>Inventory Management Tool</h3>
-                        <p>Productivity tool</p>
-                    </div>
-                </div>
+            <div class="portfolio-grid" id="portfolio-container">
+                <!-- Portfolio items will be dynamically loaded here -->
             </div>
         </div>
     </section>
@@ -232,30 +208,7 @@
                 <h2>Get In Touch</h2>
                 <p>Ready to start your project? Contact us today!</p>
             </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>contact@h190k.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p>+1 (123) 456-7890</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>Remote Services Worldwide</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
+            <div class="contact-container">
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
@@ -279,6 +232,17 @@
                         </div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
+                    <div id="form-status" class="form-status"></div>
+                </div>
+                <div class="social-container">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                    <p class="email-contact">Or email us directly at: <a href="mailto:contact@h190k.com">contact@h190k.com</a></p>
                 </div>
             </div>
         </div>
@@ -316,5 +280,62 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script type="module">
+        import projects from './js/projects.js';
+        
+        // Function to create portfolio items
+        function createPortfolioItems() {
+            const portfolioContainer = document.getElementById('portfolio-container');
+            
+            // Clear any existing content
+            portfolioContainer.innerHTML = '';
+            
+            // Loop through projects and create elements
+            projects.forEach(project => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                
+                // Create image element
+                const img = document.createElement('img');
+                img.src = project.img;
+                img.alt = project.title;
+                img.onerror = function() {
+                    // Fallback if image fails to load
+                    this.src = 'https://via.placeholder.com/300x200?text=Project+Image';
+                };
+                
+                // Create overlay with project details
+                const overlay = document.createElement('div');
+                overlay.className = 'portfolio-overlay';
+                
+                const title = document.createElement('h3');
+                title.textContent = project.title;
+                
+                const desc = document.createElement('p');
+                desc.textContent = project.desc;
+                
+                const link = document.createElement('a');
+                link.href = project.link;
+                link.target = '_blank';
+                link.className = 'btn';
+                link.textContent = project.button || 'View Project';
+                
+                // Append elements to overlay
+                overlay.appendChild(title);
+                overlay.appendChild(desc);
+                overlay.appendChild(link);
+                
+                // Append image and overlay to portfolio item
+                portfolioItem.appendChild(img);
+                portfolioItem.appendChild(overlay);
+                
+                // Append portfolio item to container
+                portfolioContainer.appendChild(portfolioItem);
+            });
+        }
+        
+        // Initialize portfolio when DOM is loaded
+        document.addEventListener('DOMContentLoaded', createPortfolioItems);
+    </script>
 </body>
 </html>

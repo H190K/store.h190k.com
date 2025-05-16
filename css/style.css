@@ -326,7 +326,7 @@ nav ul li a:hover::after {
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .portfolio-item {
@@ -334,6 +334,13 @@ nav ul li a:hover::after {
     border-radius: var(--border-radius);
     overflow: hidden;
     height: 250px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .portfolio-item img {
@@ -349,7 +356,7 @@ nav ul li a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -357,6 +364,8 @@ nav ul li a:hover::after {
     color: white;
     opacity: 0;
     transition: var(--transition);
+    padding: 20px;
+    text-align: center;
 }
 
 .portfolio-item:hover .portfolio-overlay {
@@ -369,35 +378,103 @@ nav ul li a:hover::after {
 
 .portfolio-overlay h3 {
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    color: white;
 }
 
 .portfolio-overlay p {
     color: var(--light-color);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.portfolio-overlay .btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.portfolio-overlay .btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
 }
 
 /* Contact Section */
-.contact-grid {
+.contact-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 3fr 2fr;
     gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.contact-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
+.contact-form {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
 }
 
-.contact-item {
+.form-status {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: var(--border-radius);
     text-align: center;
-    margin-bottom: 30px;
+    display: none;
 }
 
-.contact-item i {
-    font-size: 2rem;
+.form-status.success {
+    display: block;
+    background-color: rgba(56, 176, 0, 0.1);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.form-status.error {
+    display: block;
+    background-color: rgba(255, 0, 110, 0.1);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.social-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+.social-container h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+}
+
+.email-contact {
+    margin-top: 30px;
+    color: var(--gray-color);
+}
+
+.email-contact a {
     color: var(--primary-color);
-    margin-bottom: 15px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.email-contact a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
 }
 
 .social-links {
@@ -407,8 +484,8 @@ nav ul li a:hover::after {
 }
 
 .social-links a {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
@@ -417,11 +494,22 @@ nav ul li a:hover::after {
     align-items: center;
     margin: 0 10px;
     transition: var(--transition);
+    font-size: 1.2rem;
 }
 
 .social-links a:hover {
     background-color: var(--secondary-color);
     transform: translateY(-5px);
+}
+
+@media screen and (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-container {
+        order: -1;
+    }
 }
 
 .form-group {

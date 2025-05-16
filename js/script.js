@@ -1,3 +1,6 @@
+// Import EmailJS configuration
+import config from './email.js';
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
@@ -60,13 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
     
+    // Initialize EmailJS
+    const initEmailJS = () => {
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init(config.emailjs.publicKey);
+        } else {
+            console.error('EmailJS library not loaded');
+        }
+    };
+    
     // Form submission handling
     const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('form-status');
     const newsletterForm = document.getElementById('newsletterForm');
     
     if (contactForm) {
+        // Initialize EmailJS when the page loads
+        initEmailJS();
+        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             
             // Get form data
             const name = document.getElementById('name').value;
@@ -76,14 +98,52 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Simple validation
             if (!name || !email || !service || !message) {
-                alert('Please fill in all fields');
+                showFormStatus('Please fill in all fields', false);
+                resetSubmitButton();
                 return;
             }
             
-            // Here you would normally send the data to a server
-            // For now, we'll just show a success message
-            alert('Thank you for your message! We will get back to you soon.');
-            contactForm.reset();
+            // Prepare template parameters for EmailJS
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                service_requested: service,
+                message: message
+            };
+            
+            // Send email using EmailJS
+            emailjs.send(config.emailjs.serviceID, config.emailjs.templateID, templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showFormStatus('Thank you for your message! We will get back to you soon.', true);
+                    contactForm.reset();
+                    resetSubmitButton();
+                })
+                .catch(function(error) {
+                    console.log('FAILED...', error);
+                    showFormStatus('Oops! Something went wrong. Please try again later.', false);
+                    resetSubmitButton();
+                });
+                
+            // Function to reset submit button
+            function resetSubmitButton() {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
+            
+            // Function to show form status
+            function showFormStatus(message, isSuccess) {
+                formStatus.textContent = message;
+                formStatus.className = 'form-status ' + (isSuccess ? 'success' : 'error');
+                
+                // Hide status message after 5 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                    setTimeout(() => {
+                        formStatus.className = 'form-status';
+                    }, 300);
+                }, 5000);
+            }
         });
     }
     
