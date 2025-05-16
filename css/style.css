@@ -120,6 +120,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo a {
@@ -157,49 +158,32 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
-/* Ensure the container establishes stacking context */
-header .container {
-    position: relative;
-    z-index: 1;
-}
-
+/* Burger Menu Styling */
 .menu-toggle {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1100; /* higher than nav */
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 15px;
-    background: none;
-    border: none;
-    position: relative;
-    z-index: 1100;
-    touch-action: manipulation;
-    pointer-events: auto;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.menu-toggle::before {
-    content: '';
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
-    z-index: -1;
-    background: transparent;
+.menu-toggle i {
+  font-size: 1.75rem;
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-        position: relative;
-        z-index: 1001;
-    }
-    
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
     nav {
         position: fixed;
         top: 0;
