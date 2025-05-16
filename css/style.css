@@ -284,13 +284,20 @@ nav ul li a:hover::after {
     text-align: center;
 }
 
-/* All pricing cards use the primary color except the custom card */
 .featured .pricing-header {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
-.custom-card .pricing-header {
+.custom .pricing-header {
     background-color: var(--accent-color);
+}
+
+.custom .btn {
+    background-color: var(--accent-color);
+}
+
+.custom .btn:hover {
+    background-color: #d10058; /* Darker shade of accent color */
 }
 
 .pricing-header h3 {
