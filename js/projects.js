@@ -1,8 +1,5 @@
 // projects.js — Central configuration for all projects
 
-// Featured projects to show on the homepage (max 4)
-const featuredProjects = ['Alnssor Enterprise', 'AttendList – Streamlined Classroom Attendance', 'Chat Starter', 'QR Generator Browser Extension'];
-
 // All projects data
 const projects = [
   {
@@ -50,9 +47,15 @@ const projects = [
   }
 ];
 
-// Helper function to get featured projects
+// Helper function to get featured projects - specify the ones you want featured on homepage
 function getFeaturedProjects() {
-  return projects.filter(project => featuredProjects.includes(project.title));
+  // Return the specified projects for the homepage
+  return [
+    projects.find(p => p.title === 'Alnssor Enterprise'),
+    projects.find(p => p.title === 'Chat Starter'),
+    projects.find(p => p.title === 'QR Generator Browser Extension'),
+    projects.find(p => p.title === 'AttendList – Streamlined Classroom Attendance')
+  ].filter(Boolean); // Filter out any undefined values
 }
 
 // Helper function to get all projects
