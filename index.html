@@ -321,7 +321,7 @@
                     this.src = 'https://via.placeholder.com/300x200?text=Project+Image';
                 };
                 
-                // Create overlay with project details
+                // Create content div for project details
                 const overlay = document.createElement('div');
                 overlay.className = 'portfolio-overlay';
                 
@@ -342,7 +342,7 @@
                 overlay.appendChild(desc);
                 overlay.appendChild(link);
                 
-                // Append image and overlay to portfolio item
+                // Append image and content to portfolio item
                 portfolioItem.appendChild(img);
                 portfolioItem.appendChild(overlay);
                 
