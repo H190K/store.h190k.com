@@ -102,61 +102,35 @@ document.addEventListener('DOMContentLoaded', function() {
             const originalBtnText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
-            
+
             // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-            
-            // Simple validation
-            if (!name || !email || !service || !message) {
-                showFormStatus('Please fill in all fields', false);
-                resetSubmitButton();
-                return;
-            }
-            
-            // Prepare template parameters for EmailJS
             const templateParams = {
                 from_name: document.getElementById('name').value,
                 from_email: document.getElementById('email').value,
                 service_type: document.getElementById('service').value,
                 message: document.getElementById('message').value
             };
-            
-            // Send email using EmailJS
+
+            // Send email
             emailjs.send(config.emailjs.serviceID, config.emailjs.templateID, templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    showFormStatus('Thank you for your message! We will get back to you soon.', true);
+                .then(() => {
+                    formStatus.textContent = 'Message sent successfully!';
+                    formStatus.style.color = '#38b000';
                     contactForm.reset();
-                    resetSubmitButton();
                 })
-                .catch(function(error) {
-                    console.log('FAILED...', error);
-                    showFormStatus('Oops! Something went wrong. Please try again later.', false);
-                    resetSubmitButton();
-                });
-                
-            // Function to reset submit button
-            function resetSubmitButton() {
-                submitBtn.textContent = originalBtnText;
-                submitBtn.disabled = false;
-            }
-            
-            // Function to show form status
-            function showFormStatus(message, isSuccess) {
-                formStatus.textContent = message;
-                formStatus.className = 'form-status ' + (isSuccess ? 'success' : 'error');
-                
-                // Hide status message after 5 seconds
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
+                .catch((error) => {
+                    formStatus.textContent = 'Error sending message. Please try again.';
+                    formStatus.style.color = '#ff006e';
+                    console.error('Email send error:', error);
+                })
+                .finally(() => {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                    formStatus.style.display = 'block';
                     setTimeout(() => {
-                        formStatus.className = 'form-status';
-                    }, 300);
-                }, 5000);
-            }
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                });
         });
     }
     
