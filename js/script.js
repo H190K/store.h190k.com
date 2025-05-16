@@ -3,78 +3,81 @@ import config from './email.js';
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Handle hash change to detect when user navigates to contact section with a service parameter
-    const handleHashChange = () => {
-        // Check if we're on the contact section with a service parameter
+    // Helper function to select a service in the dropdown
+    const selectServiceInDropdown = (serviceParam) => {
+        const serviceSelect = document.getElementById('service');
+        if (serviceSelect && serviceParam) {
+            // Find the option with matching value and select it
+            const options = serviceSelect.options;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value === serviceParam) {
+                    serviceSelect.selectedIndex = i;
+                    break;
+                }
+            }
+            
+            // Focus on the message field for better UX
+            const messageField = document.getElementById('message');
+            if (messageField) {
+                setTimeout(() => {
+                    messageField.focus();
+                }, 300);
+            }
+        }
+    };
+    
+    // Process URL parameters in the hash
+    const processHashParameters = () => {
         const hash = window.location.hash;
         if (hash.startsWith('#contact')) {
             // Extract service parameter from hash fragment
             const serviceMatch = hash.match(/[?&]service=([^&]+)/);
             const serviceParam = serviceMatch ? serviceMatch[1] : null;
-            
             if (serviceParam) {
-                // Find and select the service in the dropdown
-                const serviceSelect = document.getElementById('service');
-                if (serviceSelect) {
-                    // Find the option with matching value and select it
-                    const options = serviceSelect.options;
-                    for (let i = 0; i < options.length; i++) {
-                        if (options[i].value === serviceParam) {
-                            serviceSelect.selectedIndex = i;
-                            break;
-                        }
-                    }
-                    
-                    // Focus on the message field for better UX
-                    const messageField = document.getElementById('message');
-                    if (messageField) {
-                        setTimeout(() => {
-                            messageField.focus();
-                        }, 500);
-                    }
-                }
+                selectServiceInDropdown(serviceParam);
+            }
+            
+            // Ensure we scroll to the contact section
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
             }
         }
     };
     
-    // Process hash parameters on initial page load
-    handleHashChange();
-    
-    // Listen for hash changes to handle direct navigation
-    window.addEventListener('hashchange', handleHashChange);
-    
-    // Add scroll event listener to handle manual scrolling
-    window.addEventListener('scroll', function() {
-        // Get the contact section position
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-            const contactPosition = contactSection.getBoundingClientRect().top;
-            // If contact section is in view and we have a service parameter in the hash
-            if (contactPosition < window.innerHeight / 2 && contactPosition > -window.innerHeight / 2) {
-                // Extract service parameter from hash fragment
-                const hash = window.location.hash;
-                if (hash.startsWith('#contact')) {
-                    const serviceMatch = hash.match(/[?&]service=([^&]+)/);
-                    const serviceParam = serviceMatch ? serviceMatch[1] : null;
-                    
-                    if (serviceParam) {
-                        // Find and select the service in the dropdown
-                        const serviceSelect = document.getElementById('service');
-                        if (serviceSelect && serviceSelect.value !== serviceParam) {
-                            // Find the option with matching value and select it
-                            const options = serviceSelect.options;
-                            for (let i = 0; i < options.length; i++) {
-                                if (options[i].value === serviceParam) {
-                                    serviceSelect.selectedIndex = i;
-                                    break;
-                                }
-                            }
-                        }
-                    }
+    // Handle all service buttons (Get Started buttons)
+    const serviceButtons = document.querySelectorAll('.pricing-card .btn');
+    serviceButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the service parameter from the href
+            const href = this.getAttribute('href');
+            const serviceMatch = href.match(/[?&]service=([^&]+)/);
+            const serviceParam = serviceMatch ? serviceMatch[1] : null;
+            
+            // Scroll to contact section
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                // Set the window hash, which will trigger hashchange
+                window.location.hash = href;
+                
+                // Scroll to the contact section
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Pre-select the service
+                if (serviceParam) {
+                    selectServiceInDropdown(serviceParam);
                 }
             }
-        }
+        });
     });
+    
+    // Process hash parameters on initial page load
+    processHashParameters();
+    
+    // Listen for hash changes to handle direct navigation
+    window.addEventListener('hashchange', processHashParameters);
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
