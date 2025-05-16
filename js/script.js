@@ -1,6 +1,42 @@
 // Import EmailJS configuration
 import config from './email.js';
 
+// Global function to scroll to contact form and select service
+function scrollToContact(serviceType) {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        // Get the header height for offset
+        const headerHeight = document.querySelector('header').offsetHeight;
+        
+        // Scroll to the contact section
+        window.scrollTo({
+            top: contactSection.offsetTop - headerHeight,
+            behavior: 'smooth'
+        });
+        
+        // Select the service in the dropdown
+        const serviceSelect = document.getElementById('service');
+        if (serviceSelect) {
+            // Find the option with matching value and select it
+            const options = serviceSelect.options;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value === serviceType) {
+                    serviceSelect.selectedIndex = i;
+                    break;
+                }
+            }
+            
+            // Focus on the message field
+            setTimeout(() => {
+                const messageField = document.getElementById('message');
+                if (messageField) {
+                    messageField.focus();
+                }
+            }, 700); // Delay to ensure scroll completes
+        }
+    }
+}
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Helper function to select a service in the dropdown
