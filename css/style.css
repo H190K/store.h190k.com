@@ -314,32 +314,21 @@ nav ul li a:hover::after {
     padding: 30px;
     text-align: center;
     box-shadow: var(--box-shadow);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    will-change: transform;
-    backface-visibility: hidden;
-    position: relative;
-    z-index: 0;
-    border-radius: 12px;
 }
 
-/* Smoother Layout Expansion */
-.service-card, .pricing-card {
-  transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.15);
-  will-change: transform, width, height;
+/* Unified Card Hover Effect */
+.service-card, .pricing-card, .portfolio-item {
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.5, 1.4), box-shadow 0.35s ease;
+  will-change: transform;
   backface-visibility: hidden;
   position: relative;
   z-index: 0;
   border-radius: 12px;
-  margin: 0;
 }
 
-.service-card:hover, .pricing-card:hover {
+.service-card:hover, .pricing-card:hover, .portfolio-item:hover {
   transform: scale(1.08);
-  width: 110%;
-  height: 110%;
-  margin-left: -5%;
-  margin-right: -5%;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
   z-index: 5;
 }
 
@@ -397,12 +386,6 @@ nav ul li a:hover::after {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--box-shadow);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    will-change: transform;
-    backface-visibility: hidden;
-    position: relative;
-    z-index: 0;
-    border-radius: 12px;
 }
 
 .pricing-header {
@@ -504,17 +487,6 @@ nav ul li a:hover::after {
     overflow: hidden;
     height: auto;
     background-color: white;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-origin: center;
-    will-change: transform;
-    backface-visibility: hidden;
-}
-
-.portfolio-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-    z-index: 1;
 }
 
 .portfolio-item img {
