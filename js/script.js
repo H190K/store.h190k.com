@@ -59,11 +59,21 @@ document.addEventListener('DOMContentLoaded', function() {
             // Scroll to contact section
             const contactSection = document.getElementById('contact');
             if (contactSection) {
-                // Set the window hash, which will trigger hashchange
-                window.location.hash = href;
+                // Get the header height for offset
+                const headerHeight = document.querySelector('header').offsetHeight;
                 
-                // Scroll to the contact section
-                contactSection.scrollIntoView({ behavior: 'smooth' });
+                // Use window.scrollTo for more reliable scrolling
+                window.scrollTo({
+                    top: contactSection.offsetTop - headerHeight,
+                    behavior: 'smooth'
+                });
+                
+                // Set the hash without causing another scroll (after the smooth scroll)
+                setTimeout(() => {
+                    // Use history.replaceState to avoid triggering another scroll
+                    const newUrl = window.location.pathname + window.location.search + '#contact?service=' + serviceParam;
+                    history.replaceState(null, '', newUrl);
+                }, 800);
                 
                 // Pre-select the service
                 if (serviceParam) {
