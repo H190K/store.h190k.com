@@ -284,13 +284,13 @@ nav ul li a:hover::after {
     text-align: center;
 }
 
-/* All pricing cards now use the same primary color */
+/* All pricing cards use the primary color except the custom card */
 .featured .pricing-header {
     background-color: var(--primary-color);
 }
 
 .custom-card .pricing-header {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 .pricing-header h3 {
