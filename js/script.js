@@ -6,26 +6,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
-    
-    if (menuToggle) {
-        // Add both click and touch events
-        menuToggle.addEventListener('click', toggleMenu);
-        menuToggle.addEventListener('touchstart', toggleMenu, {passive: true});
+    const body = document.body;
 
-        function toggleMenu() {
-            document.body.style.overflow = nav.classList.contains('active') ? '' : 'hidden';
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             nav.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        }
+            body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        });
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
-                toggleMenu();
+            if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+                nav.classList.remove('active');
+                body.style.overflow = '';
             }
         });
+
+        // Close menu when clicking nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
     }
-    
+
     // Smooth scrolling for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     
@@ -85,55 +91,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Form submission handling
+    // Contact Form Handling
     const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('form-status');
-    const newsletterForm = document.getElementById('newsletterForm');
-    
     if (contactForm) {
-        // Initialize EmailJS when the page loads
-        initEmailJS();
-        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show loading state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
+            // Clear URL parameters
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
 
-            // Get form data
             const templateParams = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                service_type: document.getElementById('service').value,
-                message: document.getElementById('message').value
+                from_name: this.name.value,
+                from_email: this.email.value,
+                service_type: this.service.value,
+                message: this.message.value
             };
 
-            // Send email
             emailjs.send(config.emailjs.serviceID, config.emailjs.templateID, templateParams)
                 .then(() => {
-                    formStatus.textContent = 'Message sent successfully!';
-                    formStatus.style.color = '#38b000';
-                    contactForm.reset();
+                    this.reset();
+                    showToast('Message sent successfully!', 'success');
                 })
                 .catch((error) => {
-                    formStatus.textContent = 'Error sending message. Please try again.';
-                    formStatus.style.color = '#ff006e';
-                    console.error('Email send error:', error);
+                    console.error('Email error:', error);
+                    showToast('Failed to send message. Please try again.', 'error');
                 })
                 .finally(() => {
-                    submitBtn.textContent = originalBtnText;
+                    submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
-                    formStatus.style.display = 'block';
-                    setTimeout(() => {
-                        formStatus.style.display = 'none';
-                    }, 5000);
                 });
         });
+
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
     }
     
+    // Newsletter form handling
+    const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
