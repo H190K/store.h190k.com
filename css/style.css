@@ -311,11 +311,15 @@ nav ul li a:hover::after {
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 1;
 }
 
 .service-icon {
@@ -480,15 +484,16 @@ nav ul li a:hover::after {
     height: auto;
     background-color: white;
     box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .portfolio-item:hover {
-    transform: translateY(-10px);
+    transform: scale(1.03);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
 .portfolio-item img {
