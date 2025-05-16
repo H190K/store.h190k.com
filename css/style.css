@@ -288,6 +288,10 @@ nav ul li a:hover::after {
     background-color: var(--secondary-color);
 }
 
+.custom-card .pricing-header {
+    background-color: var(--accent-color);
+}
+
 .pricing-header h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;

@@ -3,6 +3,71 @@ import config from './email.js';
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Handle service selection from URL parameters
+    const handleServiceSelection = () => {
+        // Check for URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceParam = urlParams.get('service');
+        
+        if (serviceParam) {
+            const serviceSelect = document.getElementById('service');
+            if (serviceSelect) {
+                // Find the option with matching value and select it
+                const options = serviceSelect.options;
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].value === serviceParam) {
+                        serviceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+                
+                // Focus on the message field for better UX
+                const messageField = document.getElementById('message');
+                if (messageField) {
+                    setTimeout(() => {
+                        messageField.focus();
+                    }, 500);
+                }
+            }
+        }
+    };
+    
+    // Handle service button clicks
+    const serviceButtons = document.querySelectorAll('.service-btn');
+    serviceButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const service = this.getAttribute('data-service');
+            if (service) {
+                // Save the selected service to sessionStorage
+                sessionStorage.setItem('selectedService', service);
+            }
+        });
+    });
+    
+    // Check if we should pre-select a service from sessionStorage
+    const preSelectFromSession = () => {
+        const selectedService = sessionStorage.getItem('selectedService');
+        if (selectedService) {
+            const serviceSelect = document.getElementById('service');
+            if (serviceSelect) {
+                // Find the option with matching value and select it
+                const options = serviceSelect.options;
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].value === selectedService) {
+                        serviceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+                
+                // Clear the stored service after it's been used
+                sessionStorage.removeItem('selectedService');
+            }
+        }
+    };
+    
+    // Run the service selection handling
+    handleServiceSelection();
+    preSelectFromSession();
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
