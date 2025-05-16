@@ -604,6 +604,17 @@ nav ul li a:hover::after {
     border-radius: var(--border-radius);
     padding: 30px;
     box-shadow: var(--box-shadow);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 1.5), 
+              box-shadow 0.35s ease;
+    transform-origin: center;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.social-container:hover {
+    transform: scale(1.07);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
 .social-container h3 {
