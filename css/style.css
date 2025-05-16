@@ -163,6 +163,46 @@ nav ul li a:hover::after {
     cursor: pointer;
 }
 
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        z-index: 999;
+    }
+    
+    nav.active {
+        max-height: 500px;
+        padding: 20px 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li {
+        margin: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+}
+
 /* Hero Section */
 .hero {
     height: 80vh;

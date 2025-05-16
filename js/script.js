@@ -9,8 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
+            document.body.style.overflow = nav.classList.contains('active') ? '' : 'hidden';
             nav.classList.toggle('active');
             menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
     
@@ -27,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (nav.classList.contains('active')) {
                     nav.classList.remove('active');
                     menuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
                 
                 const targetId = this.getAttribute('href');
