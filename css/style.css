@@ -302,6 +302,9 @@ nav ul li a:hover::after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .service-card {
@@ -374,6 +377,9 @@ nav ul li a:hover::after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .pricing-card {
