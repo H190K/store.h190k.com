@@ -96,21 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
+            const orig = btn.textContent;
             btn.textContent = 'Sending…';
             btn.disabled = true;
 
-            const templateParams = {
-                from_name: this.from_name.value,
-                from_email: this.from_email.value,
-                service_type: this.service_type.value,
-                message: this.message.value
-            };
-
-            emailjs.send(
+            emailjs.sendForm(
                 window.emailConfig.emailjs.serviceID,
                 window.emailConfig.emailjs.templateID,
-                templateParams
+                this
             )
             .then(() => {
                 this.reset();
@@ -121,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showToast('Failed to send message. Please try again.', 'error');
             })
             .finally(() => {
-                btn.textContent = originalText;
+                btn.textContent = orig;
                 btn.disabled = false;
             });
         });

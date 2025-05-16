@@ -1,4 +1,4 @@
-// EmailJS configuration - Contains service IDs and API key
+// EmailJS configuration with service IDs and public key
 export default {
   emailjs: {
     publicKey: "49_dulv6CMLuR4L-c",
