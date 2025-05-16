@@ -175,6 +175,21 @@ header .container {
     padding: 15px;
     background: none;
     border: none;
+    position: relative;
+    z-index: 1100;
+    touch-action: manipulation;
+    pointer-events: auto;
+}
+
+.menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    z-index: -1;
+    background: transparent;
 }
 
 @media (max-width: 768px) {
