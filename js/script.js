@@ -1,8 +1,14 @@
 // Import EmailJS configuration
 import config from './email.js';
+window.emailConfig = config;
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(window.emailConfig.emailjs.publicKey);
+    }
+
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
@@ -82,60 +88,51 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
     
-    // Initialize EmailJS
-    const initEmailJS = () => {
-        if (typeof emailjs !== 'undefined') {
-            emailjs.init(config.emailjs.publicKey);
-        } else {
-            console.error('EmailJS library not loaded');
-        }
-    };
-    
     // Contact Form Handling
     const contactForm = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('form-status');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Clear URL parameters
-            window.history.replaceState({}, document.title, window.location.pathname);
-
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending…';
+            btn.disabled = true;
 
             const templateParams = {
-                from_name: this.name.value,
-                from_email: this.email.value,
-                service_type: this.service.value,
+                from_name: this.from_name.value,
+                from_email: this.from_email.value,
+                service_type: this.service_type.value,
                 message: this.message.value
             };
 
-            emailjs.send(config.emailjs.serviceID, config.emailjs.templateID, templateParams)
-                .then(() => {
-                    this.reset();
-                    showToast('Message sent successfully!', 'success');
-                })
-                .catch((error) => {
-                    console.error('Email error:', error);
-                    showToast('Failed to send message. Please try again.', 'error');
-                })
-                .finally(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
+            emailjs.send(
+                window.emailConfig.emailjs.serviceID,
+                window.emailConfig.emailjs.templateID,
+                templateParams
+            )
+            .then(() => {
+                this.reset();
+                showToast('Message sent successfully!', 'success');
+            })
+            .catch(err => {
+                console.error('EmailJS error:', err);
+                showToast('Failed to send message. Please try again.', 'error');
+            })
+            .finally(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
         });
 
         function showToast(message, type) {
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.textContent = message;
-            document.body.appendChild(toast);
+            statusDiv.textContent = message;
+            statusDiv.className = `form-status ${type}`;
+            statusDiv.style.display = 'block';
             
             setTimeout(() => {
-                toast.remove();
+                statusDiv.style.display = 'none';
             }, 5000);
         }
     }
