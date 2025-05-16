@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Prepare template parameters for EmailJS
             const templateParams = {
-                from_name: name,
-                from_email: email,
-                service_requested: service,
-                message: message
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                service_type: document.getElementById('service').value,
+                message: document.getElementById('message').value
             };
             
             // Send email using EmailJS
