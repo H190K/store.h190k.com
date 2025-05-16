@@ -304,8 +304,8 @@ nav ul li a:hover::after {
     gap: 30px;
     overflow: visible;
     position: relative;
-    z-index: 1;
     isolation: isolate;
+    z-index: 1;
 }
 
 .service-card {
@@ -367,18 +367,14 @@ nav ul li a:hover::after {
 }
 
 /* Pricing Section */
-.pricing {
-    background-color: #f5f7fa;
-}
-
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     overflow: visible;
     position: relative;
-    z-index: 1;
     isolation: isolate;
+    z-index: 1;
 }
 
 .pricing-card {
