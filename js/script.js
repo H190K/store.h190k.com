@@ -1,89 +1,31 @@
 // Import EmailJS configuration
 import config from './email.js';
 
-// --- UNIVERSAL BURGER MENU FUNCTIONALITY FOR ALL PAGES ---
+// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Support for multiple navs/menus if needed
-    const menuToggles = document.querySelectorAll('.menu-toggle');
-    const navs = document.querySelectorAll('nav');
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    
+    if (menuToggle) {
+        // Add both click and touch events
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchstart', toggleMenu, {passive: true});
 
-    if (!menuToggles.length || !navs.length) {
-        // No menu on this page
-        return;
-    }
-
-    // Helper to get the nav associated with a toggle (assumes sibling structure)
-    function getAssociatedNav(toggle) {
-        // If nav is a sibling of menu-toggle
-        let parent = toggle.parentElement;
-        if (!parent) return null;
-        let nav = parent.querySelector('nav');
-        if (nav) return nav;
-        // fallback: search up DOM
-        nav = parent.parentElement ? parent.parentElement.querySelector('nav') : null;
-        return nav;
-    }
-
-    // Toggle menu function
-    function toggleMenu(toggle, nav) {
-        const isActive = nav.classList.contains('active');
-        if (!isActive) {
-            nav.classList.add('active');
-            toggle.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        } else {
-            nav.classList.remove('active');
-            toggle.classList.remove('active');
-            document.body.style.overflow = '';
+        function toggleMenu() {
+            document.body.style.overflow = nav.classList.contains('active') ? '' : 'hidden';
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         }
-    }
 
-    // Attach event listeners
-    menuToggles.forEach(function(toggle) {
-        const nav = getAssociatedNav(toggle);
-        if (!nav) return;
-        // Click
-        toggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMenu(toggle, nav);
-        });
-        // Touch
-        toggle.addEventListener('touchstart', function(e) {
-            e.stopPropagation();
-            toggleMenu(toggle, nav);
-        }, {passive: true});
-    });
-
-    // Close menu on outside click or nav link click
-    document.addEventListener('click', function(e) {
-        menuToggles.forEach(function(toggle) {
-            const nav = getAssociatedNav(toggle);
-            if (!nav) return;
-            if (nav.classList.contains('active')) {
-                // If click outside nav and toggle
-                if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-                    nav.classList.remove('active');
-                    toggle.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+                toggleMenu();
             }
         });
-    });
-    // Close menu when clicking a nav link
-    navs.forEach(function(nav) {
-        nav.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                nav.classList.remove('active');
-                menuToggles.forEach(function(toggle) {
-                    toggle.classList.remove('active');
-                });
-                document.body.style.overflow = '';
-            });
-        });
-    });
-});
-// --- END UNIVERSAL BURGER MENU FUNCTIONALITY ---
-
+    }
+    
     // Smooth scrolling for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     

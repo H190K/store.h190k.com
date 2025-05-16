@@ -180,8 +180,6 @@ header .container {
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
-        cursor: pointer;
-        z-index: 1100;
     }
     nav {
         position: fixed;
@@ -194,24 +192,17 @@ header .container {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease-out;
-        z-index: 1000;
+        z-index: 1000; /* lower than .menu-toggle */
     }
     nav.active {
         max-height: 500px;
         padding: 20px 0;
-        overflow-y: auto;
     }
     /* Ensure clickable area */
     .menu-toggle i {
-        pointer-events: none;
-        display: inline-block;
-        padding: 5px;
+        pointer-events: none; /* Make sure clicks go through to button */
     }
-    /* Make sure nav links are clickable */
-    nav ul li a {
-        display: block;
-        padding: 10px 20px;
-    }
+}
 
 /* Mobile Menu Styles */
 
