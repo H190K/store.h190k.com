@@ -161,6 +161,21 @@ nav ul li a:hover::after {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
+    position: relative;
+    z-index: 1001;
+    padding: 15px;
+    margin-right: -15px; /* Extra touch area */
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Ensure clickable area */
+    .menu-toggle i {
+        pointer-events: none; /* Make sure clicks go through to button */
+    }
 }
 
 /* Mobile Menu Styles */
@@ -196,10 +211,6 @@ nav ul li a:hover::after {
     nav ul li a {
         display: block;
         padding: 10px 0;
-    }
-    
-    .menu-toggle {
-        display: block;
     }
 }
 
@@ -783,10 +794,6 @@ footer {
         margin: 15px 0;
     }
 
-    .menu-toggle {
-        display: block;
-    }
-
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -800,4 +807,3 @@ footer {
         grid-template-columns: 1fr;
     }
 }
-

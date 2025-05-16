@@ -8,18 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav');
     
     if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
+        // Add both click and touch events
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchstart', toggleMenu, {passive: true});
+
+        function toggleMenu() {
             document.body.style.overflow = nav.classList.contains('active') ? '' : 'hidden';
             nav.classList.toggle('active');
             menuToggle.classList.toggle('active');
-        });
+        }
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
+                toggleMenu();
             }
         });
     }
