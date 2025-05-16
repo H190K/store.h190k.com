@@ -220,14 +220,14 @@ nav ul li a:hover::after {
 .hero-btn {
     font-size: 1.2rem;
     padding: 0.8rem 2rem;
-    background-color: #007bff;
-    border: 2px solid white;
+    background-color: var(--primary-color);
+    border: none;
     transition: all 0.3s ease;
 }
 
 .hero-btn:hover {
-    background-color: white;
-    color: #007bff;
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 @keyframes fadeInUp {
