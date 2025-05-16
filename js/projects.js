@@ -1,7 +1,7 @@
 // projects.js — Central configuration for all projects
 
 // Featured projects to show on the homepage (max 4)
-const featuredProjects = ['Alnssor Enterprise', 'AttendList', 'Chat Starter', 'QR Generator Browser Extension'];
+const featuredProjects = ['Alnssor Enterprise', 'AttendList – Streamlined Classroom Attendance', 'Chat Starter', 'QR Generator Browser Extension'];
 
 // All projects data
 const projects = [
