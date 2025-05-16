@@ -182,10 +182,21 @@ header .container {
         display: block;
     }
     nav {
-        z-index: 1000; /* lower than .menu-toggle */
-        width: 80vw;
+        position: fixed;
+        top: 80px;
         right: 0;
         left: auto;
+        width: 80vw;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        z-index: 1000; /* lower than .menu-toggle */
+    }
+    nav.active {
+        max-height: 500px;
+        padding: 20px 0;
     }
     /* Ensure clickable area */
     .menu-toggle i {
@@ -194,40 +205,7 @@ header .container {
 }
 
 /* Mobile Menu Styles */
-@media (max-width: 768px) {
-    nav {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        z-index: 999;
-    }
-    
-    nav.active {
-        max-height: 500px;
-        padding: 20px 0;
-    }
-    
-    nav ul {
-        flex-direction: column;
-    }
-    
-    nav ul li {
-        margin: 0;
-        text-align: center;
-        padding: 10px 0;
-    }
-    
-    nav ul li a {
-        display: block;
-        padding: 10px 0;
-    }
-}
+
 
 /* Hero Section */
 .hero {

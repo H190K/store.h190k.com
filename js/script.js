@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
     
-    if (menuToggle) {
+    if (!menuToggle || !nav) {
+        console.warn('Menu toggle or nav not found on this page.');
+        return;
+    }
+    
         // Add both click and touch events
         menuToggle.addEventListener('click', toggleMenu);
         menuToggle.addEventListener('touchstart', toggleMenu, {passive: true});
