@@ -1,5 +1,8 @@
 // projects.js — Central configuration for all projects
 
+// Featured projects to show on the homepage (max 4)
+const featuredProjects = ['Alnssor Enterprise', 'Chat Starter', 'QR Generator Browser Extension', 'AttendList'];
+
 // All projects data
 const projects = [
   {
@@ -40,22 +43,16 @@ const projects = [
     link: 'https://ipcheck.h190k.com'
   },
   {
-    title: 'AttendList – Streamlined Classroom Attendance',
+    title: 'AttendList',
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/attendlist.png?raw=true',
     desc: 'Automate attendance with instant QR codes; timestamped check-ins and CSV export.',
     link: 'https://attendlist.h190k.com'
   }
 ];
 
-// Helper function to get featured projects - specify the ones you want featured on homepage
+// Helper function to get featured projects
 function getFeaturedProjects() {
-  // Return the specified projects for the homepage
-  return [
-    projects.find(p => p.title === 'Alnssor Enterprise'),
-    projects.find(p => p.title === 'Chat Starter'),
-    projects.find(p => p.title === 'QR Generator Browser Extension'),
-    projects.find(p => p.title === 'AttendList – Streamlined Classroom Attendance')
-  ].filter(Boolean); // Filter out any undefined values
+  return projects.filter(project => featuredProjects.includes(project.title));
 }
 
 // Helper function to get all projects
