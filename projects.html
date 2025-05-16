@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=3600, must-revalidate">
+    <meta http-equiv="Expires" content="3600">
     <title>All Projects | H190K Store</title>
     <link rel="icon" href="images/favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
@@ -141,6 +143,7 @@
                 const img = document.createElement('img');
                 img.src = project.img;
                 img.alt = project.title;
+                img.loading = 'lazy';
                 img.onerror = function() {
                     // Fallback if image fails to load
                     this.src = 'https://via.placeholder.com/300x200?text=Project+Image';
