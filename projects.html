@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | H190K Store</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <style>
+        /* Additional styles for the projects page */
+        .projects-hero {
+            height: 40vh;
+            min-height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/hero.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .projects-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .projects-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .projects-section {
+            padding: 80px 0;
+        }
+        
+        .back-home {
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">H190K Store</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="projects-hero">
+        <div class="container">
+            <h1>Our Projects</h1>
+            <p>Explore our full portfolio of web development projects</p>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="portfolio-grid" id="projects-container">
+                <!-- All projects will be dynamically loaded here -->
+            </div>
+            
+            <div class="back-home">
+                <a href="index.html" class="btn">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>H190K Store</h3>
+                    <p>Professional web development services</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 H190K Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script type="module">
+        import { getAllProjects } from './js/projects.js';
+        
+        // Function to create all project items
+        function createAllProjects() {
+            const projectsContainer = document.getElementById('projects-container');
+            
+            // Clear any existing content
+            projectsContainer.innerHTML = '';
+            
+            // Get all projects
+            const allProjects = getAllProjects();
+            
+            // Loop through all projects and create elements
+            allProjects.forEach(project => {
+                const projectItem = document.createElement('div');
+                projectItem.className = 'portfolio-item';
+                
+                // Create image element
+                const img = document.createElement('img');
+                img.src = project.img;
+                img.alt = project.title;
+                img.onerror = function() {
+                    // Fallback if image fails to load
+                    this.src = 'https://via.placeholder.com/300x200?text=Project+Image';
+                };
+                
+                // Create content div for project details
+                const overlay = document.createElement('div');
+                overlay.className = 'portfolio-overlay';
+                
+                const title = document.createElement('h3');
+                title.textContent = project.title;
+                
+                const desc = document.createElement('p');
+                desc.textContent = project.desc;
+                
+                const link = document.createElement('a');
+                link.href = project.link;
+                link.target = '_blank';
+                link.className = 'btn';
+                
+                // Use custom button text if provided, otherwise determine based on URL
+                if (project.button) {
+                    link.textContent = project.button;
+                } else if (project.link.includes('github.com')) {
+                    link.textContent = 'Download Extension';
+                } else {
+                    link.textContent = 'View Project';
+                }
+                
+                // Append elements to overlay
+                overlay.appendChild(title);
+                overlay.appendChild(desc);
+                overlay.appendChild(link);
+                
+                // Append image and content to project item
+                projectItem.appendChild(img);
+                projectItem.appendChild(overlay);
+                
+                // Append project item to container
+                projectsContainer.appendChild(projectItem);
+            });
+        }
+        
+        // Initialize projects when DOM is loaded
+        document.addEventListener('DOMContentLoaded', createAllProjects);
+    </script>
+</body>
+</html>

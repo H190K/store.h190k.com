@@ -1,5 +1,10 @@
-// projects.js — keep it in the same folder as index.html
-export default [
+// projects.js — Central configuration for all projects
+
+// Featured projects to show on the homepage (max 4)
+const featuredProjects = ['Alnssor Enterprise', 'AttendList', 'Chat Starter', 'QR Generator Browser Extension'];
+
+// All projects data
+const projects = [
   {
     title: 'Alnssor Enterprise',
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/alnssorenterprise.png?raw=true',
@@ -44,3 +49,15 @@ export default [
     link: 'https://attendlist.h190k.com'
   }
 ];
+
+// Helper function to get featured projects
+function getFeaturedProjects() {
+  return projects.filter(project => featuredProjects.includes(project.title));
+}
+
+// Helper function to get all projects
+function getAllProjects() {
+  return projects;
+}
+
+export { projects, getFeaturedProjects, getAllProjects };

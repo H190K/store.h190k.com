@@ -426,6 +426,23 @@ nav ul li a:hover::after {
     transform: translateY(-3px);
 }
 
+.view-all-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.view-all-btn {
+    background-color: var(--dark-color);
+    font-size: 1rem;
+    padding: 12px 30px;
+    display: inline-block;
+    width: auto;
+}
+
+.view-all-btn:hover {
+    background-color: var(--secondary-color);
+}
+
 /* Contact Section */
 .contact-container {
     display: grid;

@@ -298,7 +298,7 @@
 
     <script src="js/script.js"></script>
     <script type="module">
-        import projects from './js/projects.js';
+        import { getFeaturedProjects } from './js/projects.js';
         
         // Function to create portfolio items
         function createPortfolioItems() {
@@ -307,8 +307,11 @@
             // Clear any existing content
             portfolioContainer.innerHTML = '';
             
-            // Loop through projects and create elements
-            projects.forEach(project => {
+            // Get only featured projects for homepage
+            const featuredProjects = getFeaturedProjects();
+            
+            // Loop through featured projects and create elements
+            featuredProjects.forEach(project => {
                 const portfolioItem = document.createElement('div');
                 portfolioItem.className = 'portfolio-item';
                 
@@ -335,7 +338,15 @@
                 link.href = project.link;
                 link.target = '_blank';
                 link.className = 'btn';
-                link.textContent = project.button || 'View Project';
+                
+                // Use custom button text if provided, otherwise determine based on URL
+                if (project.button) {
+                    link.textContent = project.button;
+                } else if (project.link.includes('github.com')) {
+                    link.textContent = 'Download Extension';
+                } else {
+                    link.textContent = 'View Project';
+                }
                 
                 // Append elements to overlay
                 overlay.appendChild(title);
@@ -349,6 +360,18 @@
                 // Append portfolio item to container
                 portfolioContainer.appendChild(portfolioItem);
             });
+            
+            // Add View All Projects button
+            const viewAllContainer = document.createElement('div');
+            viewAllContainer.className = 'view-all-container';
+            
+            const viewAllBtn = document.createElement('a');
+            viewAllBtn.href = 'projects.html';
+            viewAllBtn.className = 'btn view-all-btn';
+            viewAllBtn.textContent = 'View All Projects';
+            
+            viewAllContainer.appendChild(viewAllBtn);
+            portfolioContainer.parentElement.appendChild(viewAllContainer);
         }
         
         // Initialize portfolio when DOM is loaded
