@@ -3,71 +3,78 @@ import config from './email.js';
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Handle service selection from URL parameters
-    const handleServiceSelection = () => {
-        // Check for URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const serviceParam = urlParams.get('service');
-        
-        if (serviceParam) {
-            const serviceSelect = document.getElementById('service');
-            if (serviceSelect) {
-                // Find the option with matching value and select it
-                const options = serviceSelect.options;
-                for (let i = 0; i < options.length; i++) {
-                    if (options[i].value === serviceParam) {
-                        serviceSelect.selectedIndex = i;
-                        break;
+    // Handle hash change to detect when user navigates to contact section with a service parameter
+    const handleHashChange = () => {
+        // Check if we're on the contact section with a service parameter
+        const hash = window.location.hash;
+        if (hash.startsWith('#contact')) {
+            // Extract service parameter from hash fragment
+            const serviceMatch = hash.match(/[?&]service=([^&]+)/);
+            const serviceParam = serviceMatch ? serviceMatch[1] : null;
+            
+            if (serviceParam) {
+                // Find and select the service in the dropdown
+                const serviceSelect = document.getElementById('service');
+                if (serviceSelect) {
+                    // Find the option with matching value and select it
+                    const options = serviceSelect.options;
+                    for (let i = 0; i < options.length; i++) {
+                        if (options[i].value === serviceParam) {
+                            serviceSelect.selectedIndex = i;
+                            break;
+                        }
                     }
-                }
-                
-                // Focus on the message field for better UX
-                const messageField = document.getElementById('message');
-                if (messageField) {
-                    setTimeout(() => {
-                        messageField.focus();
-                    }, 500);
+                    
+                    // Focus on the message field for better UX
+                    const messageField = document.getElementById('message');
+                    if (messageField) {
+                        setTimeout(() => {
+                            messageField.focus();
+                        }, 500);
+                    }
                 }
             }
         }
     };
     
-    // Handle service button clicks
-    const serviceButtons = document.querySelectorAll('.service-btn');
-    serviceButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const service = this.getAttribute('data-service');
-            if (service) {
-                // Save the selected service to sessionStorage
-                sessionStorage.setItem('selectedService', service);
+    // Process hash parameters on initial page load
+    handleHashChange();
+    
+    // Listen for hash changes to handle direct navigation
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Add scroll event listener to handle manual scrolling
+    window.addEventListener('scroll', function() {
+        // Get the contact section position
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            const contactPosition = contactSection.getBoundingClientRect().top;
+            // If contact section is in view and we have a service parameter in the hash
+            if (contactPosition < window.innerHeight / 2 && contactPosition > -window.innerHeight / 2) {
+                // Extract service parameter from hash fragment
+                const hash = window.location.hash;
+                if (hash.startsWith('#contact')) {
+                    const serviceMatch = hash.match(/[?&]service=([^&]+)/);
+                    const serviceParam = serviceMatch ? serviceMatch[1] : null;
+                    
+                    if (serviceParam) {
+                        // Find and select the service in the dropdown
+                        const serviceSelect = document.getElementById('service');
+                        if (serviceSelect && serviceSelect.value !== serviceParam) {
+                            // Find the option with matching value and select it
+                            const options = serviceSelect.options;
+                            for (let i = 0; i < options.length; i++) {
+                                if (options[i].value === serviceParam) {
+                                    serviceSelect.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
             }
-        });
+        }
     });
-    
-    // Check if we should pre-select a service from sessionStorage
-    const preSelectFromSession = () => {
-        const selectedService = sessionStorage.getItem('selectedService');
-        if (selectedService) {
-            const serviceSelect = document.getElementById('service');
-            if (serviceSelect) {
-                // Find the option with matching value and select it
-                const options = serviceSelect.options;
-                for (let i = 0; i < options.length; i++) {
-                    if (options[i].value === selectedService) {
-                        serviceSelect.selectedIndex = i;
-                        break;
-                    }
-                }
-                
-                // Clear the stored service after it's been used
-                sessionStorage.removeItem('selectedService');
-            }
-        }
-    };
-    
-    // Run the service selection handling
-    handleServiceSelection();
-    preSelectFromSession();
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
