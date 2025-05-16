@@ -285,7 +285,7 @@ nav ul li a:hover::after {
 }
 
 .featured .pricing-header {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 .custom .pricing-header {
