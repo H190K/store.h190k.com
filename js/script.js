@@ -179,4 +179,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateOnScroll);
     // Run once on page load
     animateOnScroll();
+
+    // Preloader
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', function() {
+            preloader.style.opacity = '0';
+            // Remove the preloader from the DOM after the transition
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 600); // Matches the CSS transition duration
+        });
+    }
 });
