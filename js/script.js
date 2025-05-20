@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Animation on scroll
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.service-card, .pricing-card, .portfolio-item, .contact-item');
+        const elements = document.querySelectorAll('.service-card, .portfolio-item, .contact-item');
         
         elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
@@ -162,13 +162,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (elementPosition < windowHeight - 50) {
                 element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
+                // Keep the original transform if it exists (e.g., for the 3D effect)
+                // If element.style.transform is empty or 'none', set translateY(0)
+                if (!element.style.transform || element.style.transform === 'none' || element.style.transform.includes('translateY(20px)')) {
+                     element.style.transform = 'translateY(0)';
+                }
             }
         });
     };
     
     // Set initial styles for animation
-    const elementsToAnimate = document.querySelectorAll('.service-card, .pricing-card, .portfolio-item, .contact-item');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .portfolio-item, .contact-item');
     elementsToAnimate.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
@@ -179,6 +183,43 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateOnScroll);
     // Run once on page load
     animateOnScroll();
+
+    // 3D Mouse Following Effect for Pricing Cards
+    const pricingCards = document.querySelectorAll('.pricing-card');
+
+    pricingCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenterX = cardRect.left + cardRect.width / 2;
+            const cardCenterY = cardRect.top + cardRect.height / 2;
+
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            const moveX = (mouseX - cardCenterX) / (cardRect.width / 2);
+            const moveY = (mouseY - cardCenterY) / (cardRect.height / 2);
+
+            // Adjust these values for sensitivity and maximum rotation/translation
+            const rotateY = moveX * 10; // Max 10 degrees rotation on Y axis
+            const rotateX = moveY * -10; // Max 10 degrees rotation on X axis (inverted for natural feel)
+            const translateZ = 30; // Move card slightly forward on hover
+            const scale = 1.05; // Slightly scale up on hover
+
+            // Apply transform, maintaining translateZ(0) base from CSS if needed
+             card.style.transform = `translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Reset transform when mouse leaves
+            // Use translateZ(0) to ensure the 3D context is preserved
+            card.style.transform = 'translateZ(0) rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+
+         // Add a slight transition delay on mouseleave for a smoother snap back
+         // This is handled by the CSS transition property already added
+
+    });
 
     // Preloader
     const preloader = document.getElementById('preloader');

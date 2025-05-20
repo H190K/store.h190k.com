@@ -326,7 +326,7 @@ nav ul li a:hover::after {
 
 .service-card:hover {
   transform: scale(1.07);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
   z-index: 2;
 }
 
@@ -380,7 +380,7 @@ nav ul li a:hover::after {
     position: relative;
     isolation: isolate;
     z-index: 1;
-    perspective: 1000px;
+    perspective: 2000px;
 }
 
 /* Pricing Card Styles */
@@ -388,22 +388,45 @@ nav ul li a:hover::after {
     background-color: white;
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
     will-change: transform, box-shadow;
     position: relative;
     z-index: 0;
     margin: 15px;
     transform: translateZ(0);
     transform-origin: center center;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
 .pricing-card:hover {
-    transform: scale(1.08) rotateY(10deg) rotateX(3deg);
     box-shadow: 0 35px 70px rgba(0, 0, 0, 0.3);
     z-index: 2;
+}
+
+/* Add transform-style to child elements to maintain 3D effect */
+.pricing-header,
+.pricing-features,
+.pricing-card .btn {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Subtle transform for child elements on hover (optional, can be adjusted) */
+.pricing-card:hover .pricing-header {
+    transform: translateZ(20px);
+}
+
+.pricing-card:hover .pricing-features {
+    transform: translateZ(10px);
+}
+
+.pricing-card:hover .btn {
+    transform: translateZ(30px);
 }
 
 .pricing-header {
@@ -442,6 +465,7 @@ nav ul li a:hover::after {
 
 .pricing-features {
     padding: 30px;
+    flex-grow: 1;
 }
 
 .pricing-features ul li {
@@ -466,6 +490,34 @@ nav ul li a:hover::after {
     font-weight: 600;
     padding: 12px 0;
     transition: all 0.3s ease;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+}
+
+.pricing-card .btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .pricing-grid {
+        padding: 20px 10px;
+    }
+    
+    .pricing-card {
+        margin: 10px;
+    }
+}
+
+/* Add CSS transitions for touch devices */
+@media (hover: none) {
+    .pricing-card:active {
+        transform: scale(1.03);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
 }
 
 /* Portfolio Section */
@@ -515,7 +567,7 @@ nav ul li a:hover::after {
 
 .portfolio-item:hover {
     transform: scale(1.07);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     z-index: 2;
 }
 
