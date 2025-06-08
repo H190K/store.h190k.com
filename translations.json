@@ -1,0 +1,368 @@
+{
+  "en": {
+    "header": {
+      "brand": "H190K Store",
+      "nav": {
+        "services": "Services",
+        "pricing": "Pricing",
+        "portfolio": "Portfolio",
+        "contact": "Contact"
+      }
+    },
+    "hero": {
+      "title": "Professional Web Development Services",
+      "subtitle": "Elevate your online presence with custom web solutions tailored to your needs",
+      "cta": "Explore Services"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive web development solutions to help your business thrive online",
+      "items": {
+        "landingPage": {
+          "title": "Landing Page Design",
+          "description": "Captivating, conversion-focused landing pages that make a strong first impression and drive action."
+        },
+        "dashboard": {
+          "title": "Dashboard Design",
+          "description": "Intuitive, data-rich dashboards that provide clear insights and streamline decision-making."
+        },
+        "tools": {
+          "title": "Productivity Tools",
+          "description": "Custom tools and automation solutions to enhance workflow efficiency and productivity."
+        },
+        "dns": {
+          "title": "DNS & Domain Management",
+          "description": "Professional domain and DNS management services to ensure your online presence is secure and reliable."
+        },
+        "fullstack": {
+          "title": "Full Stack Development",
+          "description": "End-to-end web application development with seamless frontend and backend integration."
+        },
+        "custom": {
+          "title": "Custom Solutions",
+          "description": "You have the idea, we make it happen. Custom web solutions tailored to your unique vision."
+        }
+      },
+      "learnMore": "Learn More"
+    },
+    "pricing": {
+      "title": "Pricing Plans",
+      "subtitle": "Transparent pricing for our professional web development services",
+      "oneTime": "One-time payment",
+      "monthly": "Monthly subscription",
+      "custom": "Tailored to your requirements",
+      "getStarted": "Get Started",
+      "contactUs": "Contact Us",
+      "features": {
+        "customDesign": "Custom design",
+        "mobileResponsive": "Mobile responsive",
+        "seoOptimization": "SEO optimization",
+        "contactForm": "Contact form integration",
+        "revisions": "revisions included",
+        "userInterface": "User-friendly interface",
+        "dataVisualization": "Data visualization",
+        "interactiveElements": "Interactive elements",
+        "userAuth": "User authentication",
+        "customAutomation": "Custom automation",
+        "workflowOptimization": "Workflow optimization",
+        "integrationCapabilities": "Integration capabilities",
+        "userDocumentation": "User documentation",
+        "domainRegistration": "Domain registration",
+        "dnsConfiguration": "DNS configuration",
+        "sslCertificate": "SSL certificate",
+        "emailSetup": "Email setup",
+        "monitoring": "24/7 monitoring",
+        "frontendDev": "Frontend development",
+        "backendIntegration": "Backend integration",
+        "databaseSetup": "Database setup",
+        "personalizedSolutions": "Personalized solutions",
+        "customFeatures": "Custom features",
+        "flexibleTimeline": "Flexible timeline",
+        "dedicatedSupport": "Dedicated support",
+        "scalableOptions": "Scalable options"
+      }
+    },
+    "portfolio": {
+      "title": "Our Portfolio",
+      "subtitle": "Check out some of our recent projects",
+      "viewProject": "View Project",
+      "viewAll": "View All Projects",
+      "backHome": "Back to Home"
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "subtitle": "Ready to start your project? Contact us today!",
+      "form": {
+        "name": "Your Name",
+        "email": "Your Email",
+        "selectService": "Select Service",
+        "message": "Your Message",
+        "send": "Send Message"
+      },
+      "social": {
+        "title": "Connect With Us",
+        "emailText": "Or email us directly at:"
+      }
+    },
+    "footer": {
+      "tagline": "Professional web development services",
+      "quickLinks": "Quick Links",
+      "newsletter": {
+        "title": "Newsletter",
+        "subtitle": "Subscribe to our newsletter for updates",
+        "placeholder": "Your Email",
+        "button": "Subscribe"
+      },
+      "copyright": "© 2025 H190K Store. All rights reserved.",
+      "language": "Language",
+      "theme": {
+        "light": "Light Mode",
+        "dark": "Dark Mode"
+      }
+    }
+  },
+  "ar": {
+    "header": {
+      "brand": "متجر H190K",
+      "nav": {
+        "services": "الخدمات",
+        "pricing": "الأسعار",
+        "portfolio": "معرض الأعمال",
+        "contact": "اتصل بنا"
+      }
+    },
+    "hero": {
+      "title": "خدمات تطوير الويب الاحترافية",
+      "subtitle": "ارتقِ بحضورك الرقمي مع حلول ويب مخصصة تناسب احتياجاتك",
+      "cta": "استكشف الخدمات"
+    },
+    "services": {
+      "title": "خدماتنا",
+      "subtitle": "حلول تطوير ويب شاملة لمساعدة عملك على الازدهار عبر الإنترنت",
+      "items": {
+        "landingPage": {
+          "title": "تصميم صفحات الهبوط",
+          "description": "صفحات هبوط جذابة ومركزة على التحويل تترك انطباعًا أولًا قويًا وتحفز على اتخاذ الإجراء."
+        },
+        "dashboard": {
+          "title": "تصميم لوحات التحكم",
+          "description": "لوحات تحكم بديهية وغنية بالبيانات توفر رؤى واضحة وتبسط عملية صنع القرار."
+        },
+        "tools": {
+          "title": "أدوات الإنتاجية",
+          "description": "أدوات مخصصة وحلول أتمتة لتعزيز كفاءة سير العمل والإنتاجية."
+        },
+        "dns": {
+          "title": "إدارة DNS والنطاقات",
+          "description": "خدمات إدارة النطاق و DNS الاحترافية لضمان أن حضورك على الإنترنت آمن وموثوق."
+        },
+        "fullstack": {
+          "title": "التطوير الشامل",
+          "description": "تطوير تطبيقات ويب من البداية إلى النهاية مع تكامل سلس بين الواجهة الأمامية والخلفية."
+        },
+        "custom": {
+          "title": "حلول مخصصة",
+          "description": "لديك الفكرة، ونحن نحققها. حلول ويب مخصصة تناسب رؤيتك الفريدة."
+        }
+      },
+      "learnMore": "اعرف المزيد"
+    },
+    "pricing": {
+      "title": "خطط الأسعار",
+      "subtitle": "أسعار شفافة لخدمات تطوير الويب الاحترافية",
+      "oneTime": "دفعة واحدة",
+      "monthly": "اشتراك شهري",
+      "custom": "مخصص لمتطلباتك",
+      "getStarted": "ابدأ الآن",
+      "contactUs": "اتصل بنا",
+      "features": {
+        "customDesign": "تصميم مخصص",
+        "mobileResponsive": "متجاوب مع الجوال",
+        "seoOptimization": "تحسين محركات البحث",
+        "contactForm": "تكامل نموذج الاتصال",
+        "revisions": "مراجعات مضمنة",
+        "userInterface": "واجهة سهلة الاستخدام",
+        "dataVisualization": "تصور البيانات",
+        "interactiveElements": "عناصر تفاعلية",
+        "userAuth": "مصادقة المستخدم",
+        "customAutomation": "أتمتة مخصصة",
+        "workflowOptimization": "تحسين سير العمل",
+        "integrationCapabilities": "قدرات التكامل",
+        "userDocumentation": "وثائق المستخدم",
+        "domainRegistration": "تسجيل النطاق",
+        "dnsConfiguration": "تكوين DNS",
+        "sslCertificate": "شهادة SSL",
+        "emailSetup": "إعداد البريد الإلكتروني",
+        "monitoring": "مراقبة على مدار الساعة",
+        "frontendDev": "تطوير الواجهة الأمامية",
+        "backendIntegration": "تكامل الواجهة الخلفية",
+        "databaseSetup": "إعداد قاعدة البيانات",
+        "personalizedSolutions": "حلول مخصصة",
+        "customFeatures": "ميزات مخصصة",
+        "flexibleTimeline": "جدول زمني مرن",
+        "dedicatedSupport": "دعم مخصص",
+        "scalableOptions": "خيارات قابلة للتوسع"
+      }
+    },
+    "portfolio": {
+      "title": "معرض أعمالنا",
+      "subtitle": "اطلع على بعض مشاريعنا الحديثة",
+      "viewProject": "عرض المشروع",
+      "viewAll": "عرض جميع المشاريع",
+      "backHome": "العودة إلى الصفحة الرئيسية"
+    },
+    "contact": {
+      "title": "تواصل معنا",
+      "subtitle": "هل أنت مستعد لبدء مشروعك؟ اتصل بنا اليوم!",
+      "form": {
+        "name": "اسمك",
+        "email": "بريدك الإلكتروني",
+        "selectService": "اختر الخدمة",
+        "message": "رسالتك",
+        "send": "إرسال الرسالة"
+      },
+      "social": {
+        "title": "تواصل معنا",
+        "emailText": "أو راسلنا مباشرة على:"
+      }
+    },
+    "footer": {
+      "tagline": "خدمات تطوير ويب احترافية",
+      "quickLinks": "روابط سريعة",
+      "newsletter": {
+        "title": "النشرة الإخبارية",
+        "subtitle": "اشترك في نشرتنا الإخبارية للحصول على التحديثات",
+        "placeholder": "بريدك الإلكتروني",
+        "button": "اشترك"
+      },
+      "copyright": "© 2025 متجر H190K. جميع الحقوق محفوظة.",
+      "language": "اللغة",
+      "theme": {
+        "light": "الوضع الفاتح",
+        "dark": "الوضع الداكن"
+      }
+    }
+  },
+  "tr": {
+    "header": {
+      "brand": "H190K Store",
+      "nav": {
+        "services": "Hizmetler",
+        "pricing": "Fiyatlandırma",
+        "portfolio": "Portfolyo",
+        "contact": "İletişim"
+      }
+    },
+    "hero": {
+      "title": "Profesyonel Web Geliştirme Hizmetleri",
+      "subtitle": "İhtiyaçlarınıza özel web çözümleri ile çevrimiçi varlığınızı güçlendirin",
+      "cta": "Hizmetleri Keşfet"
+    },
+    "services": {
+      "title": "Hizmetlerimiz",
+      "subtitle": "İşletmenizin çevrimiçi ortamda büyümesine yardımcı olacak kapsamlı web geliştirme çözümleri",
+      "items": {
+        "landingPage": {
+          "title": "İniş Sayfası Tasarımı",
+          "description": "Güçlü bir ilk izlenim bırakan ve harekete geçiren, dönüşüm odaklı iniş sayfaları."
+        },
+        "dashboard": {
+          "title": "Panel Tasarımı",
+          "description": "Net içgörüler sağlayan ve karar vermeyi kolaylaştıran sezgisel, veri açısından zengin paneller."
+        },
+        "tools": {
+          "title": "Verimlilik Araçları",
+          "description": "İş akışı verimliliğini ve üretkenliği artıran özel araçlar ve otomasyon çözümleri."
+        },
+        "dns": {
+          "title": "DNS ve Alan Adı Yönetimi",
+          "description": "Çevrimiçi varlığınızın güvenli ve güvenilir olmasını sağlayan profesyonel alan adı ve DNS yönetim hizmetleri."
+        },
+        "fullstack": {
+          "title": "Full Stack Geliştirme",
+          "description": "Sorunsuz ön yüz ve arka yüz entegrasyonu ile uçtan uca web uygulama geliştirme."
+        },
+        "custom": {
+          "title": "Özel Çözümler",
+          "description": "Fikir sizden, uygulaması bizden. Benzersiz vizyonunuza özel web çözümleri."
+        }
+      },
+      "learnMore": "Daha Fazla Bilgi"
+    },
+    "pricing": {
+      "title": "Fiyatlandırma Planları",
+      "subtitle": "Profesyonel web geliştirme hizmetlerimiz için şeffaf fiyatlandırma",
+      "oneTime": "Tek seferlik ödeme",
+      "monthly": "Aylık abonelik",
+      "custom": "İhtiyaçlarınıza özel",
+      "getStarted": "Başla",
+      "contactUs": "Bize Ulaşın",
+      "features": {
+        "customDesign": "Özel tasarım",
+        "mobileResponsive": "Mobil uyumlu",
+        "seoOptimization": "SEO optimizasyonu",
+        "contactForm": "İletişim formu entegrasyonu",
+        "revisions": "revizyon dahil",
+        "userInterface": "Kullanıcı dostu arayüz",
+        "dataVisualization": "Veri görselleştirme",
+        "interactiveElements": "Etkileşimli öğeler",
+        "userAuth": "Kullanıcı kimlik doğrulama",
+        "customAutomation": "Özel otomasyon",
+        "workflowOptimization": "İş akışı optimizasyonu",
+        "integrationCapabilities": "Entegrasyon yetenekleri",
+        "userDocumentation": "Kullanıcı dokümantasyonu",
+        "domainRegistration": "Alan adı kaydı",
+        "dnsConfiguration": "DNS yapılandırması",
+        "sslCertificate": "SSL sertifikası",
+        "emailSetup": "E-posta kurulumu",
+        "monitoring": "7/24 izleme",
+        "frontendDev": "Ön yüz geliştirme",
+        "backendIntegration": "Arka yüz entegrasyonu",
+        "databaseSetup": "Veritabanı kurulumu",
+        "personalizedSolutions": "Kişiselleştirilmiş çözümler",
+        "customFeatures": "Özel özellikler",
+        "flexibleTimeline": "Esnek zaman çizelgesi",
+        "dedicatedSupport": "Özel destek",
+        "scalableOptions": "Ölçeklenebilir seçenekler"
+      }
+    },
+    "portfolio": {
+      "title": "Portfolyomuz",
+      "subtitle": "Son projelerimizden bazılarına göz atın",
+      "viewProject": "Projeyi Görüntüle",
+      "viewAll": "Tüm Projeleri Görüntüle",
+      "backHome": "Ana Sayfaya Dön"
+    },
+    "contact": {
+      "title": "İletişime Geçin",
+      "subtitle": "Projenize başlamaya hazır mısınız? Bugün bize ulaşın!",
+      "form": {
+        "name": "Adınız",
+        "email": "E-posta Adresiniz",
+        "selectService": "Hizmet Seçin",
+        "message": "Mesajınız",
+        "send": "Mesaj Gönder"
+      },
+      "social": {
+        "title": "Bize Ulaşın",
+        "emailText": "Veya doğrudan e-posta gönderin:"
+      }
+    },
+    "footer": {
+      "tagline": "Profesyonel web geliştirme hizmetleri",
+      "quickLinks": "Hızlı Bağlantılar",
+      "newsletter": {
+        "title": "Bülten",
+        "subtitle": "Güncellemeler için bültenimize abone olun",
+        "placeholder": "E-posta Adresiniz",
+        "button": "Abone Ol"
+      },
+      "copyright": "© 2025 H190K Store. Tüm hakları saklıdır.",
+      "language": "Dil",
+      "theme": {
+        "light": "Açık Mod",
+        "dark": "Koyu Mod"
+      }
+    }
+  }
+} 

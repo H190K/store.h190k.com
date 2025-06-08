@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- EmailJS Library -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
-<body>
+<body class="loading">
     <div id="preloader">
         <div class="loader"></div>
     </div>
@@ -94,6 +94,14 @@
                     </div>
                     <h3>Full Stack Development</h3>
                     <p>End-to-end web application development with seamless frontend and backend integration.</p>
+                    <a href="#pricing" class="service-link">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Custom Solutions</h3>
+                    <p>You have the idea, we make it happen. Custom web solutions tailored to your unique vision.</p>
                     <a href="#pricing" class="service-link">Learn More</a>
                 </div>
             </div>
@@ -222,6 +230,9 @@
             <div class="portfolio-grid" id="portfolio-container">
                 <!-- Portfolio items will be dynamically loaded here -->
             </div>
+            <div class="view-all-container">
+                <a href="projects.html" class="btn view-all-btn">View All Projects</a>
+            </div>
         </div>
     </section>
 
@@ -295,6 +306,19 @@
                     </form>
                 </div>
             </div>
+            <div class="footer-controls">
+                <div class="language-selector">
+                    <label for="languageDropdown">Language</label>
+                    <select id="languageDropdown" class="language-dropdown">
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                        <option value="tr">Türkçe</option>
+                    </select>
+                </div>
+                <button id="themeToggle" class="theme-switcher" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 H190K Store. All rights reserved.</p>
             </div>
@@ -303,84 +327,117 @@
 
     <script type="module" src="js/script.js"></script>
     <script type="module">
-        import { getFeaturedProjects } from './js/projects.js';
+        import { getFeaturedProjectsEN, getFeaturedProjectsAR, getFeaturedProjectsTR } from './js/projects.js';
+        // Helper to get current language
+        function getCurrentLang() {
+            return localStorage.getItem('language') || 'en';
+        }
+        // Helper to get translations
+        async function getTranslations() {
+            const res = await fetch('./translations.json');
+            return await res.json();
+        }
+        // Function to get featured projects array by language
+        function getFeaturedProjectsByLang(lang) {
+            if (lang === 'ar') return getFeaturedProjectsAR();
+            if (lang === 'tr') return getFeaturedProjectsTR();
+            return getFeaturedProjectsEN();
+        }
+        // Track the current language state
+        let currentLanguageState = getCurrentLang();
         
-        // Function to create portfolio items
-        function createPortfolioItems() {
+        // Create a more robust rendering function
+        function updatePortfolio() {
+            const newLang = getCurrentLang();
+            // Only render if the language has actually changed
+            if (newLang !== currentLanguageState) {
+                currentLanguageState = newLang;
+                createPortfolioItems();
+            }
+        }
+        // Function to create portfolio items and translate View All Projects button
+        async function createPortfolioItems() {
             const portfolioContainer = document.getElementById('portfolio-container');
-            
             // Clear any existing content
             portfolioContainer.innerHTML = '';
-            
+            // Get language and translations
+            const lang = getCurrentLang();
+            const translations = await getTranslations();
+            const t = translations[lang]?.portfolio || translations['en'].portfolio;
             // Get only featured projects for homepage
-            const featuredProjects = getFeaturedProjects();
-            
+            const featuredProjects = getFeaturedProjectsByLang(lang);
             // Loop through featured projects and create elements
             featuredProjects.forEach(project => {
                 const portfolioItem = document.createElement('div');
                 portfolioItem.className = 'portfolio-item';
-                
                 // Create image element
                 const img = document.createElement('img');
+                img.loading = 'lazy';
                 img.src = project.img;
                 img.alt = project.title;
                 img.onerror = function() {
-                    // Fallback if image fails to load
                     this.src = 'https://via.placeholder.com/300x200?text=Project+Image';
                 };
-                
                 // Create content div for project details
                 const overlay = document.createElement('div');
                 overlay.className = 'portfolio-overlay';
-                
                 const title = document.createElement('h3');
                 title.textContent = project.title;
-                
                 const desc = document.createElement('p');
                 desc.textContent = project.desc;
-                
                 const link = document.createElement('a');
                 link.href = project.link;
                 link.target = '_blank';
                 link.className = 'btn';
-                
                 // Use custom button text if provided, otherwise determine based on URL
                 if (project.button) {
                     link.textContent = project.button;
                 } else if (project.link.includes('github.com')) {
                     link.textContent = 'Download Extension';
                 } else {
-                    link.textContent = 'View Project';
+                    link.textContent = t.viewProject || 'View Project';
                 }
-                
                 // Append elements to overlay
                 overlay.appendChild(title);
                 overlay.appendChild(desc);
                 overlay.appendChild(link);
-                
                 // Append image and content to portfolio item
                 portfolioItem.appendChild(img);
                 portfolioItem.appendChild(overlay);
-                
                 // Append portfolio item to container
                 portfolioContainer.appendChild(portfolioItem);
             });
-            
-            // Add View All Projects button
-            const viewAllContainer = document.createElement('div');
-            viewAllContainer.className = 'view-all-container';
-            
-            const viewAllBtn = document.createElement('a');
-            viewAllBtn.href = 'projects.html';
-            viewAllBtn.className = 'btn view-all-btn';
-            viewAllBtn.textContent = 'View All Projects';
-            
-            viewAllContainer.appendChild(viewAllBtn);
-            portfolioContainer.parentElement.appendChild(viewAllContainer);
+            // Translate the static View All Projects button
+            const viewAllBtn = document.querySelector('.view-all-btn');
+            if (viewAllBtn) viewAllBtn.textContent = t.viewAll || 'View All Projects';
         }
-        
-        // Initialize portfolio when DOM is loaded
-        document.addEventListener('DOMContentLoaded', createPortfolioItems);
+        // Initialize portfolio when DOM is loaded and on language change
+        document.addEventListener('DOMContentLoaded', () => {
+            // On initial load, we always want to render
+            createPortfolioItems();
+        });
+        // Listen for language change (from language-theme.js)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'language') updatePortfolio();
+        });
+        // Listen for language change custom event
+        window.addEventListener('languageChanged', updatePortfolio);
+        // Also listen for manual language change event (if triggered in-page)
+        document.getElementById('languageDropdown')?.addEventListener('change', updatePortfolio);
+    </script>
+    
+    <!-- Language and Theme Manager -->
+    <script src="js/language-theme.js" defer></script>
+    
+    <!-- Animated Code Background -->
+    <script src="js/code-background.js" defer></script>
+
+    <script>
+        // Smooth scroll to top when logo is clicked
+        document.querySelector('.logo a').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
