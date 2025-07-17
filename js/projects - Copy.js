@@ -59,13 +59,6 @@ const projects_en = [
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/attendlist.png?raw=true',
     desc: 'Automate attendance with instant QR codes; timestamped check-ins and CSV export.',
     link: 'https://attendlist.h190k.com'
-  },
-  {
-    id: 'businesscardgenerator',
-    title: 'Business Card Generator – Interactive Design Tool',
-    img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
-    desc: 'Create stylish, responsive business cards with real-time customization. Unique UI with multiple layout styles. Deployed on Netlify.',
-    link: 'https://businesscardgenerator.h190k.com'
   }
 ];
 
@@ -120,13 +113,6 @@ const projects_ar = [
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/attendlist.png?raw=true',
     desc: 'أتمتة الحضور باستخدام رموز QR الفورية؛ تسجيلات وقت الحضور وتصدير CSV.',
     link: 'https://attendlist.h190k.com'
-  },
-  {
-    id: 'businesscardgenerator',
-    title: 'مولد بطاقة العمل – أداة تصميم تفاعلية',
-    img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
-    desc: 'صمّم بطاقات عمل أنيقة ومتجاوبة حسب ذوقك مع تخصيص مباشر. واجهة مختلفة وتصاميم متعددة. مستضاف على Netlify.',
-    link: 'https://businesscardgenerator.h190k.com'
   }
 ];
 
@@ -181,13 +167,6 @@ const projects_tr = [
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/attendlist.png?raw=true',
     desc: 'Anlık QR kodları ile katılımı otomatikleştirin; zaman damgalı girişler ve CSV dışa aktarımı.',
     link: 'https://attendlist.h190k.com'
-  },
-  {
-    id: 'businesscardgenerator',
-    title: 'Kartvizit Oluşturucu – Etkileşimli Tasarım Aracı',
-    img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
-    desc: 'Şık ve duyarlı kartvizitleri anında özelleştirme ile oluştur. Farklı UI ve çoklu düzen stilleri. Netlify üzerinde yayınlandı.',
-    link: 'https://businesscardgenerator.h190k.com'
   }
 ];
 
