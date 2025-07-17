@@ -66,9 +66,9 @@ const projects_en = [
 const projects_ar = [
   {
     id: 'alnssorenterprise',
-    title: 'المؤسسة النسر',
+    title: 'شركة النسور',
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/alnssorenterprise.png?raw=true',
-    desc: 'موقع شامل لمؤسسة النسر يعرض خدماتهم ومنتجاتهم.',
+    desc: 'موقع شامل لشركة النسور يعرض خدماتهم ومنتجاتهم.',
     link: 'https://alnssorenterprise.co/'
   },
   {
