@@ -64,7 +64,7 @@ const projects_en = [
     id: 'businesscardgenerator',
     title: 'Business Card Generator – Interactive Design Tool',
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
-    desc: 'Create stylish, responsive business cards with real-time customization. Unique UI with multiple layout styles. Deployed on Netlify.',
+    desc: 'Design your own stylish and professional business card with interactive layouts and real-time customization.',
     link: 'https://businesscardgenerator.h190k.com'
   }
 ];
@@ -125,7 +125,7 @@ const projects_ar = [
     id: 'businesscardgenerator',
     title: 'مولد بطاقة العمل – أداة تصميم تفاعلية',
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
-    desc: 'صمّم بطاقات عمل أنيقة ومتجاوبة حسب ذوقك مع تخصيص مباشر. واجهة مختلفة وتصاميم متعددة. مستضاف على Netlify.',
+    desc: 'صمّم بطاقة عمل أنيقة واحترافية بطريقتك مع تخصيص مباشر وتصاميم تفاعلية.',
     link: 'https://businesscardgenerator.h190k.com'
   }
 ];
@@ -186,7 +186,7 @@ const projects_tr = [
     id: 'businesscardgenerator',
     title: 'Kartvizit Oluşturucu – Etkileşimli Tasarım Aracı',
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
-    desc: 'Şık ve duyarlı kartvizitleri anında özelleştirme ile oluştur. Farklı UI ve çoklu düzen stilleri. Netlify üzerinde yayınlandı.',
+    desc: 'Etkileşimli düzenler ve anlık özelleştirme ile kendi şık ve profesyonel kartvizitinizi tasarlayın.',
     link: 'https://businesscardgenerator.h190k.com'
   }
 ];
