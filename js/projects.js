@@ -66,6 +66,13 @@ const projects_en = [
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
     desc: 'Design your own stylish and professional business card with interactive layouts and real-time customization.',
     link: 'https://businesscardgenerator.h190k.com'
+  },
+  {
+    id: 'htmlrunner',
+    title: 'HTML Runner',
+    img: 'https://github.com/H190K/h190k.com-repo/blob/main/html.png?raw=true',
+    desc: 'A tool for quickly testing and running HTML code snippets in real-time.',
+    link: 'https://htmlrunner.h190k.com'
   }
 ];
 
@@ -127,6 +134,13 @@ const projects_ar = [
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
     desc: 'صمّم بطاقة عمل أنيقة واحترافية بطريقتك مع تخصيص مباشر وتصاميم تفاعلية.',
     link: 'https://businesscardgenerator.h190k.com'
+  },
+  {
+    id: 'htmlrunner',
+    title: 'مشغل HTML',
+    img: 'https://github.com/H190K/h190k.com-repo/blob/main/html.png?raw=true',
+    desc: 'أداة لاختبار وتشغيل مقتطفات كود HTML بسرعة في الوقت الفعلي.',
+    link: 'https://htmlrunner.h190k.com'
   }
 ];
 
@@ -188,6 +202,13 @@ const projects_tr = [
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
     desc: 'Etkileşimli düzenler ve anlık özelleştirme ile kendi şık ve profesyonel kartvizitinizi tasarlayın.',
     link: 'https://businesscardgenerator.h190k.com'
+  },
+  {
+    id: 'htmlrunner',
+    title: 'HTML Çalıştırıcı',
+    img: 'https://github.com/H190K/h190k.com-repo/blob/main/html.png?raw=true',
+    desc: 'HTML kod parçacıklarını gerçek zamanlı olarak hızlı bir şekilde test etmek ve çalıştırmak için bir araç.',
+    link: 'https://htmlrunner.h190k.com'
   }
 ];
 
