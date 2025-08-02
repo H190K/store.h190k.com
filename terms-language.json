@@ -1,0 +1,59 @@
+{
+  "en": {
+    "title": "Terms & Conditions",
+    "home_text": "Home",
+    "copyright": "© 2025 H190K Store. All rights reserved.",
+    "content": [
+      "<h2>Software Solutions Terms</h2>",
+      "<p>By using H190K Store's software solutions, you accept these terms governed by Turkish and Iraqi law.</p>",
+      "<h2>Service Scope</h2>",
+      "<p>We design, develop and maintain custom software as agreed in project documentation.</p>",
+      "<h2>Refunds</h2>",
+      "<p>Payments are final. After a project phase is approved or delivered, refunds are not available.</p>",
+      "<h2>Intellectual Property</h2>",
+      "<p>Unless otherwise agreed, source code and deliverables remain our property until full payment is received.</p>",
+      "<h2>Privacy & Security</h2>",
+      "<p>Your information is handled securely following our <a href=\"privacy-policy.html\">Privacy Policy</a>.</p>",
+      "<h2>Contact</h2>",
+      "<p>Email <a href=\"mailto:support@h190k.com\">support@h190k.com</a> for assistance.</p>"
+    ]
+  },
+  "ar": {
+    "title": "الشروط والأحكام",
+    "home_text": "الرئيسية",
+    "copyright": "© 2025 متجر H190K. جميع الحقوق محفوظة.",
+    "content": [
+      "<h2>شروط الحلول البرمجية</h2>",
+      "<p>باستخدامك حلول H190K Store البرمجية، فإنك توافق على هذه الشروط الخاضعة لقوانين تركيا والعراق.</p>",
+      "<h2>نطاق الخدمة</h2>",
+      "<p>نقوم بتصميم وتطوير وصيانة البرمجيات حسب ما يتم الاتفاق عليه في وثائق المشروع.</p>",
+      "<h2>سياسة الاسترداد</h2>",
+      "<p>جميع الدفعات نهائية. بعد اعتماد أو تسليم أي مرحلة من المشروع لا تتوفر استردادات.</p>",
+      "<h2>الملكية الفكرية</h2>",
+      "<p>ما لم يتم الاتفاق خطيًا على غير ذلك، تظل الشيفرة والمنتجات ملكًا لنا حتى السداد الكامل.</p>",
+      "<h2>الخصوصية والأمان</h2>",
+      "<p>نتعامل مع معلوماتك بأمان وفقًا لـ <a href=\"privacy-policy.html\">سياسة الخصوصية الخاصة بنا</a>.</p>",
+      "<h2>التواصل</h2>",
+      "<p>راسلنا على <a href=\"mailto:support@h190k.com\">support@h190k.com</a> للمساعدة.</p>"
+    ]
+  },
+  "tr": {
+    "title": "Kullanım Şartları",
+    "home_text": "Ana Sayfa",
+    "copyright": "© 2025 H190K Store. Tüm hakları saklıdır.",
+    "content": [
+      "<h2>Yazılım Çözümleri Şartları</h2>",
+      "<p>H190K Store'un yazılım çözümlerini kullanarak Türkiye ve Irak yasalarına tabi olan bu şartları kabul edersiniz.</p>",
+      "<h2>Hizmet Kapsamı</h2>",
+      "<p>Proje dokümanlarında anlaşıldığı şekilde özel yazılım tasarlar, geliştirir ve bakımını yaparız.</p>",
+      "<h2>İade Politikası</h2>",
+      "<p>Ödemeler kesindir. Proje aşaması onaylandıktan veya teslim edildikten sonra iade yapılmaz.</p>",
+      "<h2>Fikri Mülkiyet</h2>",
+      "<p>Tam ödeme alınana kadar kaynak kodu ve teslimatlar bizim mülkiyetimizde kalır, aksi yazılı olarak kararlaştırılmadıkça.</p>",
+      "<h2>Gizlilik & Güvenlik</h2>",
+      "<p>Bilgileriniz <a href=\"privacy-policy.html\">Gizlilik Politikamıza</a> uygun olarak güvenli şekilde işlenir.</p>",
+      "<h2>İletişim</h2>",
+      "<p>Destek için <a href=\"mailto:support@h190k.com\">support@h190k.com</a> adresine e-posta gönderin.</p>"
+    ]
+  }
+}

@@ -249,7 +249,21 @@ class LanguageThemeManager {
         if (newsletterBtn) newsletterBtn.textContent = t.footer.newsletter.button;
         
         const copyright = document.querySelector('.footer-bottom p');
-        if (copyright) copyright.textContent = t.footer.copyright;
+        if (copyright) {
+            const privacyLink = document.getElementById('privacyPolicyLink');
+            const termsLink = document.getElementById('termsConditionsLink');
+            
+            if (privacyLink && termsLink) {
+                privacyLink.textContent = t.footer.privacyPolicy;
+                termsLink.textContent = t.footer.termsConditions;
+                
+                copyright.innerHTML = `${t.footer.copyright} | 
+                    <a href="privacy-policy.html" class="footer-link" id="privacyPolicyLink">${t.footer.privacyPolicy}</a> | 
+                    <a href="terms-conditions.html" class="footer-link" id="termsConditionsLink">${t.footer.termsConditions}</a>`;
+            } else {
+                copyright.textContent = t.footer.copyright;
+            }
+        }
         
         const langLabel = document.querySelector('.language-selector label');
         if (langLabel) langLabel.textContent = t.footer.language;
@@ -288,4 +302,4 @@ class LanguageThemeManager {
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new LanguageThemeManager();
-}); 
+});

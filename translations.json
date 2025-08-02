@@ -114,6 +114,8 @@
         "button": "Subscribe"
       },
       "copyright": "© 2025 H190K Store. All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsConditions": "Terms & Conditions",
       "language": "Language",
       "theme": {
         "light": "Light Mode",
@@ -236,6 +238,8 @@
         "button": "اشترك"
       },
       "copyright": "© 2025 متجر H190K. جميع الحقوق محفوظة.",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsConditions": "الشروط والأحكام",
       "language": "اللغة",
       "theme": {
         "light": "الوضع الفاتح",
@@ -358,6 +362,8 @@
         "button": "Abone Ol"
       },
       "copyright": "© 2025 H190K Store. Tüm hakları saklıdır.",
+      "privacyPolicy": "Gizlilik Politikası",
+      "termsConditions": "Şartlar ve Koşullar",
       "language": "Dil",
       "theme": {
         "light": "Açık Mod",
@@ -365,4 +371,4 @@
       }
     }
   }
-} 
+}

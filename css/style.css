@@ -921,6 +921,33 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.footer-link {
+    color: var(--footer-text);
+    text-decoration: none;
+    position: relative;
+    transition: var(--transition);
+    margin: 0 5px;
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
 /* Animations */
 @keyframes fadeIn {
     from {
