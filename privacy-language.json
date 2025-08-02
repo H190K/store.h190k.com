@@ -99,7 +99,7 @@
       "<h2>7. اتصل بنا</h2>",
       "<p>إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى الاتصال بنا:</p>",
       "<ul>",
-      "<li>عبر البريد الإلكتروني: support@h190k.com</li>",
+      "<li>عبر البريد الإلكتروني: <a href=\"mailto:support@h190k.com\">support@h190k.com</a></li>",
       "</ul>"
     ]
   },
@@ -151,7 +151,7 @@
       "<h2>7. Bize Ulaşın</h2>",
       "<p>Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin:</p>",
       "<ul>",
-      "<li>E-posta ile: support@h190k.com</li>",
+      "<li>E-posta ile: <a href=\"mailto:support@h190k.com\">support@h190k.com</a></li>",
       "</ul>"
     ]
   }
